@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Watch Pro X | Product Details</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #3a86ff;
+      --secondary-color: #ff006e;
+      --accent-color: #8338ec;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --success-color: #38b000;
+      --warning-color: #ffbe0b;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: var(--dark-color);
+    }
+    
+    /* Removed Header Styles */
+    
+    /* Breadcrumb */
+    .breadcrumb-item a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    /* Product Gallery */
+    .product-gallery {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    
+    .main-img-container {
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+    
+    .main-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .main-img:hover {
+      transform: scale(1.05);
+    }
+    
+    .thumbnail-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .thumbnail:hover, .thumbnail.active {
+      opacity: 1;
+      border-color: var(--primary-color);
+    }
+    
+    /* Product Info */
+    .product-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-subtitle {
+      color: #6c757d;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .product-price {
+      font-size: 2rem;
+      color: var(--success-color);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .original-price {
+      text-decoration: line-through;
+      color: #6c757d;
+      font-size: 1.2rem;
+      margin-left: 10px;
+    }
+    
+    .discount-badge {
+      background-color: var(--secondary-color);
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+    
+    .rating {
+      color: var(--warning-color);
+      margin-bottom: 1rem;
+    }
+    
+    .rating-count {
+      color: #6c757d;
+      margin-left: 5px;
+    }
+    
+    .product-description {
+      font-size: 1.1rem;
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .color-options {
+      margin-bottom: 1.5rem;
+    }
+    
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid #e9ecef;
+      transition: transform 0.2s ease;
+    }
+    
+    .color-option:hover, .color-option.active {
+      transform: scale(1.1);
+      border-color: var(--dark-color);
+    }
+    
+    .color-black {
+      background-color: #212529;
+    }
+    
+    .color-silver {
+      background-color: #adb5bd;
+    }
+    
+    .color-blue {
+      background-color: #3a86ff;
+    }
+    
+    .color-red {
+      background-color: #ff006e;
+    }
+    
+    .quantity-input {
+      width: 100px;
+      text-align: center;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+    }
+    
+    .btn-quantity {
+      background-color: #e9ecef;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-quantity:hover {
+      background-color: #dee2e6;
+    }
+    
+    .btn-cart {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    .btn-cart:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-wishlist {
+      background-color: white;
+      color: var(--dark-color);
+      border: 1px solid #ced4da;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-wishlist:hover {
+      background-color: #f8f9fa;
+      color: var(--secondary-color);
+    }
+    
+    .delivery-info {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+    }
+    
+    .delivery-icon {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+   
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-title {
+        font-size: 2rem;
+      }
+      
+      .main-img {
+        height: 300px;
+      }
+      
+      .thumbnail {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Breadcrumb -->
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Wearables</a></li>
+        <li class="breadcrumb-item"><a href="#">Smart Watches</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Smart Watch Pro X</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Product Details Section -->
+  <section class="container my-5">
+    <div class="row">
+      <!-- Product Gallery -->
+      <div class="col-lg-6 mb-4">
+        <div class="product-gallery">
+          <div class="main-img-container">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Pro X" class="main-img" id="main-product-image">
+          </div>
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Pro X - Front" class="thumbnail active" onclick="changeImage(this)">
+            <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Pro X - Side" class="thumbnail" onclick="changeImage(this)">
+            <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Pro X - Back" class="thumbnail" onclick="changeImage(this)">
+            <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Pro X - Wrist" class="thumbnail" onclick="changeImage(this)">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product Info -->
+      <div class="col-lg-6">
+        <h1 class="product-title">Smart Watch Pro X</h1>
+        <p class="product-subtitle">Next Generation Wearable Technology</p>
+        
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span class="rating-count">(128 reviews)</span>
+        </div>
+        
+        <div class="mb-3">
+          <span class="product-price">$249.99</span>
+          <span class="original-price">$299.99</span>
+          <span class="discount-badge">Save 17%</span>
+        </div>
+        
+        <p class="product-description">
+          The Smart Watch Pro X combines cutting-edge technology with elegant design. Monitor your health, track your fitness goals, receive notifications, and more with this versatile wearable device. Water-resistant up to 50 meters and with a battery life of up to 7 days.
+        </p>
+        
+        <div class="color-options mb-4">
+          <h5>Color Options:</h5>
+          <div class="color-option color-black active" data-color="Black" onclick="selectColor(this)"></div>
+          <div class="color-option color-silver" data-color="Silver" onclick="selectColor(this)"></div>
+          <div class="color-option color-blue" data-color="Blue" onclick="selectColor(this)"></div>
+          <div class="color-option color-red" data-color="Red" onclick="selectColor(this)"></div>
+          <p class="mt-2 mb-0" id="selected-color">Selected: Black</p>
+        </div>
+        
+        <div class="mb-4">
+          <h5>Quantity:</h5>
+          <div class="d-flex align-items-center">
+            <button class="btn-quantity" onclick="decrementQuantity()">-</button>
+            <input type="number" class="form-control quantity-input mx-2" value="1" min="1" id="quantity-input">
+            <button class="btn-quantity" onclick="incrementQuantity()">+</button>
+          </div>
+        </div>
+        
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <button class="btn btn-cart" onclick="addToCart()">
+            <i class="fas fa-shopping-cart me-2"></i> Add to Cart
+          </button>
+          <button class="btn btn-wishlist">
+            <i class="fas fa-heart me-2"></i> Add to Wishlist
+          </button>
+        </div>
+        
+        <div class="delivery-info">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fas fa-truck delivery-icon"></i>
+            <div>
+              <strong>Free Shipping</strong>
+              <p class="mb-0">Delivery within 3-5 business days</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <i class="fas fa-undo delivery-icon"></i>
+            <div>
+              <strong>Easy Returns</strong>
+              <p class="mb-0">30-day money-back guarantee</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <i class="fas fa-shield-alt delivery-icon"></i>
+            <div>
+              <strong>Warranty</strong>
+              <p class="mb-0">2-year manufacturer warranty</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Owl Carousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    // Image Gallery
+    function changeImage(element) {
+      // Remove active class from all thumbnails
+      document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+      });
+      
+      // Add active class to clicked thumbnail
+      element.classList.add('active');
+      
+      // Update main image
+      document.getElementById('main-product-image').src = element.src;
+      document.getElementById('main-product-image').classList.add('fade-in');
+      
+      // Remove animation class after animation completes
+      setTimeout(() => {
+        document.getElementById('main-product-image').classList.remove('fade-in');
+      }, 500);
+    }
+    
+    // Quantity Controls
+    function incrementQuantity() {
+      const input = document.getElementById('quantity-input');
+      input.value = parseInt(input.value) + 1;
+    }
+    
+    function decrementQuantity() {
+      const input = document.getElementById('quantity-input');
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+      }
+    }
+    
+    // Add to Cart
+    function addToCart() {
+      const color = document.querySelector('.color-option.active').getAttribute('data-color');
+      const quantity = document.getElementById('quantity-input').value;
+      
+      // Show confirmation toast
+      const toast = document.createElement('div');
+      toast.className = 'position-fixed bottom-0 end-0 p-3';
+      toast.style.zIndex = '11';
+      toast.innerHTML = `
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Added to Cart</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="this.parentElement.parentElement.remove()"></button>
+          </div>
+          <div class="toast-body">
+            ${quantity} x Smart Watch Pro X (${color}) added to your cart.
+          </div>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      
+      // Remove toast after 3 seconds
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }    
+  </script>
+</body>
+</html>
